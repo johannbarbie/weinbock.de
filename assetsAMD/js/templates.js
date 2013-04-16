@@ -8,6 +8,8 @@ define(function(require) {
         librarylayout: require('text!templates/librarylayout.htm'),
         index: require('text!templates/index.htm'),
         header: require('text!templates/header.htm'),
-        footer: require('text!templates/footer.htm')
+        footer: require('text!templates/footer.htm'),
+        about: require('text!templates/about.htm'),
+        howto: require('text!templates/howto.htm')
     };
 });

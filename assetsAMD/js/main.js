@@ -12,17 +12,17 @@ require.config({
         'backbone.eventbinder': '../../components/backbone.eventbinder/lib/amd/backbone.eventbinder', // amd version
         'backbone.babysitter': '../../components/backbone.babysitter/lib/amd/backbone.babysitter', // amd version
         marionette: '../../components/marionette/lib/core/amd/backbone.marionette',  // amd version
-        bootstrap: '../../components/bootstrap/docs/assets/js/bootstrap-modal',
-        flexslider: 'libs/jquery.flexslider',
+        bootstrap: '../../components/bootstrap/docs/assets/js/bootstrap',
+        'bootstrap.modal': '../../components/bootstrap/js/bootstrap-modal',
+        'bootstrap.carousel': '../../components/bootstrap/js/bootstrap-carousel',
         text: '../../components/requirejs-text/text'
     },
 
     // load the 'non AMD' versions of backbone, underscore and Marionette
     shim: {
         bootstrap: ['jquery'],
-        'flexslider': {
-            deps: ['jquery']
-        }
+        'bootstrap.modal': ['jquery','bootstrap'],
+        'bootstrap.carousel': ['jquery','bootstrap']
     }
 });
 
