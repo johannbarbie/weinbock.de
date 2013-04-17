@@ -2,6 +2,6 @@ define(['underscoreM', 'marionette', 'templates'], function(_, Marionette, templ
     'use strict';
     return Marionette.ItemView.extend({
         template: _.template(templates.howto),
-        className: "howto"
+        className: "content"
     });
 });

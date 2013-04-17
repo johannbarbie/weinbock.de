@@ -1,4 +1,10 @@
-<div id="myCarousel" class="carousel slide" data-pause="remove">
+<div id="myCarousel" class="carousel slide" data-interval="5000" data-pause="hover">
+  <ol class="carousel-indicators middle">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+<!-- Carousel items -->
   <div class="carousel-inner">
     <div class="item active">
       <img class="" src="assets/images/exp_image1.jpg">
@@ -31,8 +37,9 @@
       </div>
     </div>
   </div>
-  <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+  <!-- Carousel nav -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
 </div>
 
 

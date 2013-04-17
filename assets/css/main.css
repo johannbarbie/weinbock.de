@@ -334,6 +334,19 @@ textarea {
       
       }
 
+      .carousel-indicators.middle {
+          left: 0;
+          right: 0;
+          top: auto;
+          bottom: 15px;
+          text-align: center;
+      }
+      .carousel-indicators.middle li {
+          float: none;
+          display: inline-block;
+      }
+
+
 
       /* Sticky footer styles
       -------------------------------------------------- */
@@ -350,21 +363,33 @@ textarea {
         height: auto !important;
         height: 100%;
         /* Negative indent footer by it's height */
-        margin: 0 auto -60px;
+        /*margin: 0 auto -60px;*/
       }
 
       /* Set the fixed height of the footer here */
       #push,
-      #footer {
+      footer {
         height: 60px;
       }
-      #footer {
+      footer {
         background-color: #f5f5f5;
+      }
+
+      .content .container {
+        margin-top: 5em;
+      }
+
+      footer{
+        margin-top: 2em;
+      }
+
+      footer .container {
+        padding-top: 1em;
       }
 
       /* Lastly, apply responsive CSS fixes as necessary */
       @media (max-width: 767px) {
-        #footer {
+        footer {
           margin-left: -20px;
           margin-right: -20px;
           padding-left: 20px;

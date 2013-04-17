@@ -21,9 +21,9 @@ define(['backbone', 'underscoreM', 'marionette', 'vent', 'views/headerView', 'vi
 
     // these regions correspond to #ID's in the index.html 
     app.addRegions({
-        header: "#header",
+        header: "header",
         content: "#content",
-        footer: "#footer",
+        footer: "footer",
         modal: ModalRegion
     });
 
