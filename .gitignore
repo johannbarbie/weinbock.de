@@ -1,10 +1,5 @@
-
-components/*
-
-assets/javascript/main.optimized.js
-
-bmr.sublime-workspace
-
-weinbock.sublime-workspace
-
-weinbock.sublime-project
+node_modules
+dist
+.tmp
+.sass-cache
+app/components

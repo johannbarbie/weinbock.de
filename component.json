@@ -1,17 +1,21 @@
 {
-  "name": "203365",
+  "name": "weinbock.de",
   "version": "0.1.0",
   "dependencies": {
-    "jquery": "~1.9.1",
-    "requirejs": "~2.1.2",
-    "marionette": "~1.0.0",
-    "backbone-amd": "~0.9.10",
-    "underscore-amd": "~1.4.4",
-    "bootstrap": null,
+    "modernizr": null,
+    "jquery": "~2.0.0",
+    "requirejs": null,
+    "marionette": null,
+    "backbone-amd": null,
+    "underscore-amd": null,
+    "sass-bootstrap": null,
     "r.js": "git://github.com/jrburke/r.js.git#~2.1.2",
-    "backbone.wreqr": "~0.1.0",
-    "backbone.eventbinder": "~1.0.2",
-    "requirejs-text": "~2.0.3",
-    "backbone.babysitter": "git://github.com/marionettejs/backbone.babysitter.git#~0.0.4"
-  }
+    "backbone.wreqr": null,
+    "backbone.eventbinder": null,
+    "requirejs-text": null,
+    "backbone.babysitter": "git://github.com/marionettejs/backbone.babysitter.git#~0.0.4",
+    "normalize.scss": null,
+    "html5-boilerplate": null
+  },
+  "devDependencies": {}
 }

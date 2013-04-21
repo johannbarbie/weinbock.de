@@ -9,17 +9,15 @@ based on [Sample Backbone.Marionette modular application using RequireJS/AMD](ht
 	bower install
 ```
 
-## minify:
+## build:
 
 ```javascript
-	cd assetsAMD/build/
-	node ../../components/r.js/dist/r.js -o app.build.js
+	grunt
 ```
 
 ## run server:
 
 ```javascript
-	cd assetsAMD/build
-	node static_server.js
+	grunt server
 ```
 
