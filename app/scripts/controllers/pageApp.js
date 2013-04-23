@@ -1,4 +1,4 @@
-define(['marionette', 'views/indexView', 'views/aboutView', 'views/howtoView', 'vent'], function(Marionette, IndexView, AboutView, HowtoView, vent) {
+define(['marionette', 'views/indexView', 'views/aboutView', 'views/howtoView', 'views/faqView', 'vent'], function(Marionette, IndexView, AboutView, HowtoView, FaqView, vent) {
     'use strict';
 
     var Controller = {};
@@ -8,7 +8,8 @@ define(['marionette', 'views/indexView', 'views/aboutView', 'views/howtoView', '
         appRoutes: {
             '': 'showIndex',
             'about-us': 'showAbout',
-            'howto': 'showHowto'
+            'howto': 'showHowto',
+            'faq': 'showFaq'
         }
     });
 
@@ -25,6 +26,11 @@ define(['marionette', 'views/indexView', 'views/aboutView', 'views/howtoView', '
 
     Controller.showHowto = function() {
         var view = new HowtoView();
+        vent.trigger('app:show', view);
+    };
+
+    Controller.showFaq = function() {
+        var view = new FaqView();
         vent.trigger('app:show', view);
     };
 

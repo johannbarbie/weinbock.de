@@ -10,6 +10,7 @@ define(function(require) {
         header: require('text!templates/header.htm'),
         footer: require('text!templates/footer.htm'),
         about: require('text!templates/about.htm'),
-        howto: require('text!templates/howto.htm')
+        howto: require('text!templates/howto.htm'),
+        faq: require('text!templates/faq.htm')
     };
 });
