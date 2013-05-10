@@ -1,5 +1,5 @@
 // App.js: Ted Killilea June 2012  twitter.com/@t2k_nyc
-define(['backbone', 'underscoreM', 'marionette', 'vent', 'views/headerView', 'views/footerView', 'bootstrap' ], function(Backbone, _, Marionette, vent, HeaderView, FooterView) {
+define(['backbone', 'underscoreM', 'marionette', 'vent', 'views/templateView', 'templates', 'bootstrap' ], function(Backbone, _, Marionette, vent, TemplateView, templates) {
     'use strict';
 
     var app = new Marionette.Application();
@@ -61,17 +61,17 @@ define(['backbone', 'underscoreM', 'marionette', 'vent', 'views/headerView', 'vi
             return template;
         };
 
-        app.header.show(new HeaderView());
+        app.header.show(new TemplateView({tmplt:templates.header}));
 
-        app.footer.show(new FooterView());
+        app.footer.show(new TemplateView({tmplt:templates.footer}));
 
         // init library router/controller
         new options.libraryRouter.Router({
             controller: options.libraryController // controller implements search and defaultsearch
         });
 
-        new options.pageApp.Router({
-            controller: options.pageApp // wire-up the start method
+        new options.pageController.Router({
+            controller: options.pageController // wire-up the start method
         });
     });
 

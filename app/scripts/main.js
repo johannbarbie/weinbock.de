@@ -19,13 +19,13 @@ require.config({
     }
 });
 
-require(['app', 'controllers/librarycontroller', 'controllers/libraryrouter', 'controllers/pageApp'], function(App, LibraryController, LibraryRouter, PageApp) {
+require(['app', 'controllers/librarycontroller', 'controllers/libraryrouter', 'controllers/pageController'], function(App, LibraryController, LibraryRouter, PageController) {
     'use strict';
 
     var options = {
             libraryController: LibraryController,
             libraryRouter: LibraryRouter,
-            pageApp: PageApp
+            pageController: PageController
         };
 
     App.start(options);

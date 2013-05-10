@@ -11,6 +11,8 @@ define(function(require) {
         footer: require('text!templates/footer.htm'),
         about: require('text!templates/about.htm'),
         howto: require('text!templates/howto.htm'),
-        faq: require('text!templates/faq.htm')
+        faq: require('text!templates/faq.htm'),
+        privacy: require('text!templates/privacy.htm'),
+        impressum: require('text!templates/impressum.htm')
     };
 });
