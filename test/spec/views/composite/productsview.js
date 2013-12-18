@@ -15,9 +15,6 @@
 					expect( productsview ).to.be.an.instanceof( Productsview );
 				});
 
-				it('should have more test written', function(){
-					expect( false ).to.be.ok;
-				});
 			});
 
 		});

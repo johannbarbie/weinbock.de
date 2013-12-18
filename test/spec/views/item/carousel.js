@@ -14,10 +14,6 @@
 					var carousel = new Carousel();
 					expect( carousel ).to.be.an.instanceof( Carousel );
 				});
-
-				it('should have more test written', function(){
-					expect( false ).to.be.ok;
-				});
 			});
 
 		});

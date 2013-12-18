@@ -14,10 +14,6 @@
 					var products = new Products();
 					expect( products ).to.be.an.instanceof( Products );
 				});
-
-				it('should have more test written', function(){
-					expect( false ).to.be.ok;
-				});
 			});
 
 		});

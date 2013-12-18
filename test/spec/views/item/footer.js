@@ -14,10 +14,6 @@
 					var footer = new Footer();
 					expect( footer ).to.be.an.instanceof( Footer );
 				});
-
-				it('should have more test written', function(){
-					expect( false ).to.be.ok;
-				});
 			});
 
 		});

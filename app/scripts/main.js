@@ -2,6 +2,7 @@ require([
 	'backbone',
 	'application',
 	'routers/pageController',
+	'basicauth',
 	'regionManager'
 ],
 function ( Backbone, App, PageController ) {

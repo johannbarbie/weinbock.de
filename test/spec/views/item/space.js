@@ -14,10 +14,6 @@
 					var space = new Space();
 					expect( space ).to.be.an.instanceof( Space );
 				});
-
-				it('should have more test written', function(){
-					expect( false ).to.be.ok;
-				});
 			});
 
 		});

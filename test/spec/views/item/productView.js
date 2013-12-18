@@ -14,10 +14,6 @@
 					var productView = new Productview();
 					expect( productView ).to.be.an.instanceof( Productview );
 				});
-
-				it('should have more test written', function(){
-					expect( false ).to.be.ok;
-				});
 			});
 
 		});

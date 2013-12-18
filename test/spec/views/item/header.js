@@ -15,9 +15,6 @@
 					expect( header ).to.be.an.instanceof( Header );
 				});
 
-				it('should have more test written', function(){
-					expect( false ).to.be.ok;
-				});
 			});
 
 		});
