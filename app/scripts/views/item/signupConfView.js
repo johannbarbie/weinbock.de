@@ -38,8 +38,6 @@ function( Backbone, SignupConfTmpl  ) {
 
 		/* on render callback */
 		onRender: function() {
-			this.$('.alert').alert();
-            this.$('div.alert').hide();
 		}
 	});
 

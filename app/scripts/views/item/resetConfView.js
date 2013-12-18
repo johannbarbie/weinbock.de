@@ -15,6 +15,18 @@ function( Backbone, ResetConfTmpl  ) {
 
 		template: ResetConfTmpl,
         
+        onError: function(){
+            this.$('.alert').css('display','');
+            this.$('.alert').addClass('in');
+            this.$('button.btn-primary').button('reset');
+        },
+        handleClose: function(e){
+            var alert = $(e.target).parent();
+            alert.one(window.transEvent(), function(){
+                alert.css('display', 'none');
+            });
+            alert.removeClass('in');
+        },
 
 		/* ui selector cache */
 		ui: {},
@@ -22,6 +34,7 @@ function( Backbone, ResetConfTmpl  ) {
 		/* Ui events hash */
 		events: {
             'click button.btn-primary':'handleReset',
+            'click .close': 'handleClose',
             'blur input[name="password1"]':'checkPassword1'
         },
 
@@ -43,8 +56,7 @@ function( Backbone, ResetConfTmpl  ) {
 
 		/* on render callback */
 		onRender: function() {
-			this.$('.alert').alert();
-            this.$('div.alert').hide();
+			this.$('.alert').css('display', 'none');
             var self = this;
             console.log(this.model.get('token'));
             $.get( window.opt.basePath + '/account/password/ticket',

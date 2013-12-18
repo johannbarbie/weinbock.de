@@ -42,12 +42,11 @@ function( Backbone, Communicator, HeaderView, FooterView, SpaceView) {
 
 	/* Add initializers here */
 	App.addInitializer( function (options) {
-		//document.body.innerHTML = welcomeTmpl({ success: "CONGRATS!" });
 		
 		App.header.show(new HeaderView());
 		App.footer.show(new FooterView());
 
-		new options.pageController.Router({
+		this.router = new options.pageController.Router({
             controller: options.pageController // wire-up the start method
         });
 	});

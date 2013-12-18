@@ -23,6 +23,7 @@ function( Backbone, CaptchaTmpl, Recaptcha) {
 		/* Ui events hash */
 		events: {
             'click button.btn-primary':'handleCaptcha',
+            'click button.close': 'handleClose'
         },
 
 
@@ -44,13 +45,23 @@ function( Backbone, CaptchaTmpl, Recaptcha) {
 					tabindex: 4,
 					theme: 'clean'
 				});
-				self.$('button.btn-primary').button('reset');	
+				self.$('.alert').css('display','');
+				self.$('.alert').addClass('in');
+				self.$('button.btn-primary').button('reset');
 			});
         },
 
+        handleClose: function(e){
+            var alert = $(e.target).parent();
+            alert.one(window.transEvent(), function(){
+                alert.css('display', 'none');
+            });
+            alert.removeClass('in');
+        },
+
         onShow: function(){
-			this.$('.alert').alert();
-            this.$('div.alert').hide();
+			this.$('.alert').css('display', 'none');
+			var self = this;
             Recaptcha.create(window.opt.captchaPubKey, self.$('#recaptcha_div')[0], {
 				tabindex: 4,
 				theme: 'clean'

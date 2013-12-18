@@ -10,13 +10,12 @@ function( Backbone, AccountTmpl  ) {
 
 		initialize: function() {
 			console.log('initialize an Account ItemView');
-			console.dir(this.model.get('email'));
 		},
 
 		template: AccountTmpl,
         
 		modelEvents: {
-            'change': "modelChanged"
+            'change': 'modelChanged'
         },
         modelChanged: function() {
             this.render();

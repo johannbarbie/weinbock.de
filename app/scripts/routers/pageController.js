@@ -39,7 +39,6 @@ define(['backbone',
             'reset': 'getTicket',
             'account': 'showLogin',
             '*any': function(fragment, args, next){
-                console.log('before');
                 next();
             }
         },

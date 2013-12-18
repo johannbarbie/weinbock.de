@@ -1,8 +1,9 @@
 define([
 	'backbone',
+	'communicator',
 	'hbs!tmpl/item/resetView_tmpl'
 ],
-function( Backbone, ResetTmpl  ) {
+function( Backbone, Communicator, ResetTmpl  ) {
     'use strict';
 
 	/* Return a ItemView class definition */
@@ -10,17 +11,34 @@ function( Backbone, ResetTmpl  ) {
 
 		initialize: function() {
 			console.log('initialize a Reset ItemView');
+			this.model.on('error', this.onError, this);
 		},
 
 		template: ResetTmpl,
         
+        onError: function(model, response){
+			if (response.status===400){
+				location.reload();
+			}
+            this.$('.alert').css('display','');
+            this.$('.alert').addClass('in');
+            this.$('button.btn-primary').button('reset');
+        },
+        handleClose: function(e){
+            var alert = $(e.target).parent();
+            alert.one(window.transEvent(), function(){
+                alert.css('display', 'none');
+            });
+            alert.removeClass('in');
+        },
 
 		/* ui selector cache */
 		ui: {},
 
 		/* Ui events hash */
 		events: {
-			'click button.btn-primary':'handleReset'
+			'click button.btn-primary':'handleReset',
+			'click .close': 'handleClose',
 		},
 
 		handleReset: function(e){
@@ -32,8 +50,7 @@ function( Backbone, ResetTmpl  ) {
 
 		/* on render callback */
 		onRender: function() {
-			this.$('.alert').alert();
-            this.$('div.alert').hide();
+			this.$('.alert').css('display', 'none');
 		}
 	});
 

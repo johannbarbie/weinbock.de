@@ -10,11 +10,10 @@ define(['backbone', 'communicator', 'hbs!tmpl/item/loginView_tmpl'], function(Ba
         },
         events: {
             'click #loginBtn':'handleLogin',
-            'click #regBtn':'handleRegister',
-            'click #lostBtn':'handleLost',
+            'click .close': 'handleClose',
             'change input': 'changeInput'
         },
-        changeInput: function(e) {
+        changeInput: function() {
             this.$('#loginBtn').button('reset');
         },
         handleLogin: function(e) {
@@ -37,24 +36,23 @@ define(['backbone', 'communicator', 'hbs!tmpl/item/loginView_tmpl'], function(Ba
                 this.model.fetch();
             }
         },
-        handleRegister: function(e) {
-            e.preventDefault();
-            window.location.assign('/pwm/public/NewUser');
-        },
-        handleLost: function(e) {
-            e.preventDefault();
-            window.location.assign('/pwm/public/ForgottenPassword');
-        },
         onRolesChange: function(){
             this.next();
         },
         onError: function(){
-            this.$('div.alert').show();
+            this.$('.alert').css('display','');
+            this.$('.alert').addClass('in');
             this.$('#loginBtn').button('reset');
         },
+        handleClose: function(e){
+            var alert = $(e.target).parent();
+            alert.one(window.transEvent(), function(){
+                alert.css('display', 'none');
+            });
+            alert.removeClass('in');
+        },
         onShow:function () {
-            this.$('.alert').alert();
-            this.$('div.alert').hide();
+            this.$('.alert').css('display', 'none');
             this.$('#loginBtn').prop('disabled',true);
         }
     });
