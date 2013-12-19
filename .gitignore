@@ -1,5 +1,13 @@
-node_modules
-dist
+web/node_modules
+web/dist
+server/target
+server/.settings
 .tmp
 .sass-cache
-app/bower_components
+web/app/bower_components
+
+server/datanucleus.log
+
+server/.project
+
+server/.classpath
