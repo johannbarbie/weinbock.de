@@ -49,6 +49,7 @@ function( Backbone, Communicator, HeaderView, FooterView, SpaceView) {
 		this.router = new options.pageController.Router({
             controller: options.pageController // wire-up the start method
         });
+
 	});
 
 	return App;

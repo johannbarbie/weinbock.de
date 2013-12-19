@@ -1,19 +1,19 @@
 define([
 	'backbone',
-	'hbs!tmpl/carousel',
+	'hbs!tmpl/item/howtoView_tmpl',
 	'holderjs'
 ],
-function( Backbone, CarouselTmpl, Holder ) {
+function( Backbone, HowtoTmpl, Holder ) {
     'use strict';
 
 	/* Return a ItemView class definition */
 	return Backbone.Marionette.ItemView.extend({
 
 		initialize: function() {
-			console.log('initialize a Carousel ItemView');
+			console.log('initialize a Howto ItemView');
 		},
 		
-		template: CarouselTmpl,
+		template: HowtoTmpl,
         
 
 		/* ui selector cache */
@@ -25,7 +25,6 @@ function( Backbone, CarouselTmpl, Holder ) {
 		onShow: function() {
 			Holder.run();
 		}
-
 	});
 
 });

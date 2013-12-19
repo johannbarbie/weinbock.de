@@ -8,6 +8,10 @@ define(['backbone',
     'views/item/signupConfView',
     'views/item/loginView',
     'views/item/accountView',
+    'views/item/howtoView',
+    'views/item/faqView',
+    'views/item/privacyView',
+    'views/item/impressumView',
     'models/accountRequest',
     'models/reset',
     'models/resetConf',
@@ -18,7 +22,7 @@ define(['backbone',
     'views/item/captchaView',
     'collections/products',
     'routeFilter'
-    ], function(Backbone, Communicator,  CarouselView, MarketingView, SignUpView, ResetView, ResetConfView, SignupConfView, LoginView, AccountView, AccountRequest, Reset, ResetConf, SignupConf, LoginModel, AccountModel, ProductsView, CaptchaView, Products) {
+    ], function(Backbone, Communicator,  CarouselView, MarketingView, SignUpView, ResetView, ResetConfView, SignupConfView, LoginView, AccountView, HowtoView, FaqView, PrivacyView, ImpressumView, AccountRequest, Reset, ResetConf, SignupConf, LoginModel, AccountModel, ProductsView, CaptchaView, Products) {
     'use strict';
 
     var Controller = {};
@@ -32,7 +36,11 @@ define(['backbone',
             'confSignup/:token': 'confirmSignUp',
             'confReset/:token': 'confirmReset',
             'reset': 'showReset',
-            'shop': 'showShop'
+            'shop': 'showShop',
+            'howto': 'showHowto',
+            'faq': 'showFaq',
+            'privacy': 'showPrivacy',
+            'impressum': 'showImpressum'
         },
         before:{
             'signUp': 'getTicket',
@@ -111,6 +119,21 @@ define(['backbone',
         var contentView = new ProductsView({collection:products});
         Communicator.mediator.trigger('app:show',null,contentView);
     };
-
+    Controller.showHowto = function() {
+        var contentView = new HowtoView();
+        Communicator.mediator.trigger('app:show',null,contentView);
+    };
+    Controller.showFaq = function() {
+        var contentView = new FaqView();
+        Communicator.mediator.trigger('app:show',null,contentView);
+    };
+    Controller.showPrivacy = function() {
+        var contentView = new PrivacyView();
+        Communicator.mediator.trigger('app:show',null,contentView);
+    };
+    Controller.showImpressum = function() {
+        var contentView = new ImpressumView();
+        Communicator.mediator.trigger('app:show',null,contentView);
+    };
     return Controller;
 });

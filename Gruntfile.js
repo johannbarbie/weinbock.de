@@ -251,7 +251,7 @@ module.exports = function (grunt) {
                     src: [
                         '*.{ico,txt}',
                         '.htaccess',
-                        'images/{,*/}*.{webp,gif}',
+                        'images/{,*/}*.{webp,gif,woff,ttf,eot,svg}',
                         'bower_components/requirejs/require.js'
                     ]
                 }]
@@ -272,7 +272,7 @@ module.exports = function (grunt) {
                     amd: true
                 },
                 files: {
-                    '.tmp/scripts/templates.js': ['templates/**/*.hbs']
+                    '.tmp/scripts/templates.js': ['app/templates/**/*.hbs','app/templates/*.hbs']
                 }
             }
         }

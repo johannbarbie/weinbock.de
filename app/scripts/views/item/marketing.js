@@ -1,28 +1,30 @@
 define([
 	'backbone',
-	'hbs!tmpl/marketing'
+	'hbs!tmpl/marketing',
+	'holderjs'
 ],
-function( Backbone, MarketingTmpl  ) {
+function( Backbone, MarketingTmpl, Holder ) {
     'use strict';
 
 	/* Return a ItemView class definition */
 	return Backbone.Marionette.ItemView.extend({
 
 		initialize: function() {
-			console.log("initialize a Marketing ItemView");
+			console.log('initialize a Marketing ItemView');
 		},
 		
-    	template: MarketingTmpl,
+		template: MarketingTmpl,
         
 
-    	/* ui selector cache */
-    	ui: {},
+		/* ui selector cache */
+		ui: {},
 
 		/* Ui events hash */
 		events: {},
 
-		/* on render callback */
-		onRender: function() {}
+		onShow: function() {
+			Holder.run();
+		}
 	});
 
 });

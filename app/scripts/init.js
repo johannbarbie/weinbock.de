@@ -48,7 +48,8 @@ require.config({
         json2: '../bower_components/require-handlebars-plugin/hbs/json2',
         hbs: '../bower_components/require-handlebars-plugin/hbs',
         recaptcha: 'vendor/recaptcha_ajax',
-        basicauth: '../bower_components/backbone.basicauth/backbone.basicauth'
+        basicauth: '../bower_components/backbone.basicauth/backbone.basicauth',
+        holderjs: '../bower_components/holderjs/holder'
     },
 
     hbs: {

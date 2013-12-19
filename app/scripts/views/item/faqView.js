@@ -1,31 +1,26 @@
 define([
 	'backbone',
-	'hbs!tmpl/carousel',
-	'holderjs'
+	'hbs!tmpl/item/faqView_tmpl'
 ],
-function( Backbone, CarouselTmpl, Holder ) {
+function( Backbone, FaqTmpl  ) {
     'use strict';
 
 	/* Return a ItemView class definition */
 	return Backbone.Marionette.ItemView.extend({
 
 		initialize: function() {
-			console.log('initialize a Carousel ItemView');
+			console.log('initialize an Impressum ItemView');
 		},
 		
-		template: CarouselTmpl,
+		template: FaqTmpl,
         
 
 		/* ui selector cache */
 		ui: {},
 
 		/* Ui events hash */
-		events: {},
-
-		onShow: function() {
-			Holder.run();
-		}
-
+		events: {}
+		
 	});
 
 });
