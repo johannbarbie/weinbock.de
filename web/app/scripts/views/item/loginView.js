@@ -37,7 +37,10 @@ define(['backbone', 'communicator', 'hbs!tmpl/item/loginView_tmpl'], function(Ba
             }
         },
         onRolesChange: function(){
-            this.next();
+            if (this.model.get('roles')){
+                Communicator.mediator.trigger('app:login');
+                this.next();
+            }
         },
         onError: function(){
             this.$('.alert').css('display','');

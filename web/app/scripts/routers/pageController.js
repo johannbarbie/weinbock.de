@@ -12,6 +12,7 @@ define(['backbone',
     'views/item/faqView',
     'views/item/privacyView',
     'views/item/impressumView',
+    'views/item/logoutView',
     'models/accountRequest',
     'models/reset',
     'models/resetConf',
@@ -22,7 +23,7 @@ define(['backbone',
     'views/item/captchaView',
     'collections/products',
     'routeFilter'
-    ], function(Backbone, Communicator,  CarouselView, MarketingView, SignUpView, ResetView, ResetConfView, SignupConfView, LoginView, AccountView, HowtoView, FaqView, PrivacyView, ImpressumView, AccountRequest, Reset, ResetConf, SignupConf, LoginModel, AccountModel, ProductsView, CaptchaView, Products) {
+    ], function(Backbone, Communicator,  CarouselView, MarketingView, SignUpView, ResetView, ResetConfView, SignupConfView, LoginView, AccountView, HowtoView, FaqView, PrivacyView, ImpressumView, LogoutView, AccountRequest, Reset, ResetConf, SignupConf, LoginModel, AccountModel, ProductsView, CaptchaView, Products) {
     'use strict';
 
     var Controller = {};
@@ -40,7 +41,8 @@ define(['backbone',
             'howto': 'showHowto',
             'faq': 'showFaq',
             'privacy': 'showPrivacy',
-            'impressum': 'showImpressum'
+            'impressum': 'showImpressum',
+            'logout': 'showLogout'
         },
         before:{
             'signUp': 'getTicket',
@@ -133,6 +135,10 @@ define(['backbone',
     };
     Controller.showImpressum = function() {
         var contentView = new ImpressumView();
+        Communicator.mediator.trigger('app:show',null,contentView);
+    };
+    Controller.showLogout = function() {
+        var contentView = new LogoutView();
         Communicator.mediator.trigger('app:show',null,contentView);
     };
     return Controller;

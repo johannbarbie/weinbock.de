@@ -40,6 +40,11 @@ function( Backbone, Communicator, HeaderView, FooterView, SpaceView) {
 		}
     });
 
+    Communicator.mediator.on('app:logout', function() {
+		//renavigate to see if we still have permission
+		App.router.navigate('logout',{trigger: true});
+    });
+
 	/* Add initializers here */
 	App.addInitializer( function (options) {
 		

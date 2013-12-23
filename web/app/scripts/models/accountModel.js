@@ -1,4 +1,4 @@
-define(['backbone'], function(Backbone) {
+define(['backbone', 'communicator'], function(Backbone, Communicator) {
     'use strict';
 
     // private
@@ -8,6 +8,12 @@ define(['backbone'], function(Backbone) {
         initialize: function(){
             var cred = sessionStorage.getItem('credentials');
             this.credentials = $.parseJSON(cred);
+            var vent = Communicator.mediator;
+            var self = this;
+            vent.on('app:logout', function(){
+                self.credentials = null;
+                self.clear();
+            });
         }
     });
     return LoginStatus;

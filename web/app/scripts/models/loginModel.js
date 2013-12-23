@@ -1,4 +1,4 @@
-define(['backbone'], function(Backbone) {
+define(['backbone', 'communicator'], function(Backbone, Communicator) {
     'use strict';
 
     // private
@@ -6,9 +6,6 @@ define(['backbone'], function(Backbone) {
         url: window.opt.basePath+'/account/profile',
         defaults: {
             id: sessionStorage.getItem('id'),
-            locale: window.opt.lng,
-            basePath: window.opt.basePath,
-            srvcPath: window.opt.srvcPath,
             roles: (sessionStorage.getItem('roles'))?[sessionStorage.getItem('roles')]:undefined,
             email: (sessionStorage.getItem('email'))?sessionStorage.getItem('email'):undefined,
         },
@@ -17,6 +14,13 @@ define(['backbone'], function(Backbone) {
             this.credentials = sessionStorage.getItem('credentials');
             this.on('change:roles', function (model){
                 sessionStorage.setItem('credentials',JSON.stringify(model.credentials));
+            });
+            var vent = Communicator.mediator;
+            var self = this;
+            vent.on('app:logout', function(){
+                sessionStorage.clear();
+                self.credentials = null;
+                self.clear();
             });
         },
 
