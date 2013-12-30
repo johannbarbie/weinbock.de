@@ -14,6 +14,11 @@ require.config({
             ],
             exports: 'Backbone'
         },
+        jqueryValidation: {
+            deps: [
+                'jquery'
+            ]
+        },
         bootstrap: {
             deps: ['jquery'],
             exports: 'jquery'
@@ -49,7 +54,8 @@ require.config({
         hbs: '../bower_components/require-handlebars-plugin/hbs',
         recaptcha: 'vendor/recaptcha_ajax',
         basicauth: '../bower_components/backbone.basicauth/backbone.basicauth',
-        holderjs: '../bower_components/holderjs/holder'
+        holderjs: '../bower_components/holderjs/holder',
+        jqueryValidation: '../bower_components/jqueryValidation/jquery.validate'
     },
 
     hbs: {

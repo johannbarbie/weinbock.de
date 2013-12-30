@@ -1,6 +1,6 @@
 define([
 	'backbone',
-	'hbs!tmpl/item/signupConfView_tmpl'
+	'hbs!tmpl/signupConfView_tmpl'
 ],
 function( Backbone, SignupConfTmpl  ) {
     'use strict';
@@ -18,10 +18,13 @@ function( Backbone, SignupConfTmpl  ) {
         
         onError: function(){
 			console.log('failed');
+			this.$('#signupSucAlert').hide();
+			this.$('#signupErrAlert').addClass('in');
         },
 
         onSuccess: function(){
-			this.$('div.alert').show();
+			this.$('#signupSucAlert').addClass('in');
+			this.$('#signupErrAlert').hide();
         },
 
 		/* ui selector cache */

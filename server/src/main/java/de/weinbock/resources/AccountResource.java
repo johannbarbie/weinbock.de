@@ -6,7 +6,6 @@ import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -20,8 +19,6 @@ import javax.ws.rs.core.SecurityContext;
 
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.Element;
-import net.tanesha.recaptcha.ReCaptchaImpl;
-import net.tanesha.recaptcha.ReCaptchaResponse;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.tuple.Pair;
@@ -30,7 +27,6 @@ import org.restnucleus.dao.RNQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.weinbock.WeinbockServletConfig;
 import de.weinbock.dao.Account;
 import de.weinbock.pojo.AccountPolicy;
 import de.weinbock.pojo.AccountRequest;
@@ -59,47 +55,6 @@ public class AccountResource {
 		httpReq = (HttpServletRequest)request;
 		dao = (GenericRepository)httpReq.getAttribute("gr");
 		this.accountPolicy = accountPolicy;
-	}
-	
-	/**
-	 * a ticket is a token to execute critical or expensive code, like sending email.
-	 * a ticket will be given out a few times free, then limited by turing tests.
-	 */
-	@POST
-	@Path("/ticket")
-	public Pair<String,String> getTicket(){
-		Element e = cache.get(getRemoteAddress());
-		if (e!=null){
-			if (e.getHitCount()>3){
-				//TODO: implement turing test
-				throw new WebApplicationException("to many requests", Response.Status.BAD_REQUEST);
-			}
-		}else{
-			cache.put(new Element(getRemoteAddress(),getRemoteAddress()));
-		}
-		String ticket = RandomStringUtils.random(14, "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ123456789");
-		cache.put(new Element("ticket"+ticket,ticket));
-		return Pair.of("ticket",ticket);
-	}
-	
-	/**
-	 * recaptcha
-	 */
-	@POST
-	@Path("/captcha")
-	public Pair<String,String> recaptcha(@FormParam("chal") String challenge,
-			@FormParam("resp") String response){
-        ReCaptchaImpl reCaptcha = new ReCaptchaImpl();
-        reCaptcha.setPrivateKey(WeinbockServletConfig.captchaSecKey);
-        ReCaptchaResponse reCaptchaResponse = reCaptcha.checkAnswer(getRemoteAddress(), challenge, response);
-        if (reCaptchaResponse.isValid()) {
-        	cache.remove(getRemoteAddress());
-    		String ticket = RandomStringUtils.random(14, "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ123456789");
-    		cache.put(new Element("ticket"+ticket,ticket));
-    		return Pair.of("ticket",ticket);
-        } else {
-          	throw new WebApplicationException("error", Response.Status.BAD_REQUEST);
-        }
 	}
 	
 	/**

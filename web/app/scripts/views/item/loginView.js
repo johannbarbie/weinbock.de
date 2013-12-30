@@ -5,36 +5,35 @@ define(['backbone', 'communicator', 'hbs!tmpl/item/loginView_tmpl'], function(Ba
         className: 'container',
         initialize: function(opt) {
             this.next = opt.next;
-			this.model.on('change:roles', this.onRolesChange, this);
+            this.model.on('change:roles', this.onRolesChange, this);
             this.model.on('error', this.onError, this);
         },
         events: {
-            'click #loginBtn':'handleLogin',
             'click .close': 'handleClose',
-            'change input': 'changeInput'
         },
-        changeInput: function() {
-            this.$('#loginBtn').button('reset');
+        handleClose: function(e){
+            var alert = $(e.target).parent();
+            alert.one(window.transEvent(), function(){
+                alert.css('display', 'none');
+            });
+            alert.removeClass('in');
         },
-        handleLogin: function(e) {
-            e.preventDefault();
-            $(e.target).button('loading');
-            var user = this.$('input:text').val();
-            var pw = this.$('input:password').val();
-            if (user && pw){
-                var cred = {
-                    username: user,
-                    password: pw
-                };
-                this.model.clear({silent:true});
-                this.model.set({
-                    locale: window.opt.lng,
-                    basePath: window.opt.basePath,
-                    srvcPath: window.opt.srvcPath
-                });
-                this.model.credentials = cred;
-                this.model.fetch();
-            }
+        handleLogin: function() {
+            this.$('#loginBtn').button('loading');
+            var user = $('input:text').val();
+            var pw = $('input:password').val();
+            var cred = {
+                username: user,
+                password: pw
+            };
+            this.model.set({
+                locale: window.opt.lng,
+                basePath: window.opt.basePath,
+                srvcPath: window.opt.srvcPath
+            });
+            sessionStorage.setItem('credentials',JSON.stringify(cred));
+            this.model.credentials = cred;
+            this.model.fetch();
         },
         onRolesChange: function(){
             if (this.model.get('roles')){
@@ -47,16 +46,38 @@ define(['backbone', 'communicator', 'hbs!tmpl/item/loginView_tmpl'], function(Ba
             this.$('.alert').addClass('in');
             this.$('#loginBtn').button('reset');
         },
-        handleClose: function(e){
-            var alert = $(e.target).parent();
-            alert.one(window.transEvent(), function(){
-                alert.css('display', 'none');
-            });
-            alert.removeClass('in');
-        },
         onShow:function () {
             this.$('.alert').css('display', 'none');
-            this.$('#loginBtn').prop('disabled',true);
+            var jForm = this.$('form');
+            var self = this;
+            jForm.validate({
+                rules: {
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    password: {
+                        minlength: 6,
+                        maxlength: 15,
+                        required: true
+                    }
+                },
+                highlight: function(element) {
+                    $(element).closest('.form-group').addClass('has-error');
+                },
+                unhighlight: function(element) {
+                    $(element).closest('.form-group').removeClass('has-error');
+                },
+                errorElement: 'span',
+                errorClass: 'help-block',
+                submitHandler: function() {
+                    self.handleLogin();
+                },
+                errorPlacement: function(error, element) {
+                    error.insertAfter(element);
+                }
+            });
+
         }
     });
 });

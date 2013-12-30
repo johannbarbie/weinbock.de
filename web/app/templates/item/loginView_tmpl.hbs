@@ -1,9 +1,31 @@
-<h2 class="form-signin-heading">Login:</h2>
-<div class="alert alert-danger alert-dismissable fade">
-  <button type="button" class="close" aria-hidden="true">&times;</button>
-  <strong>Error!</strong> Incorrect Email or Password!
+<div class="container">
+	<div class="row marketing">
+	    <div class="col-sm-6 wbox">
+	    	<h2 class="form-signin-heading">Please Login:</h2>
+			<form>
+				<div class="alert alert-danger alert-dismissable fade">
+				  <button type="button" class="close" aria-hidden="true">&times;</button>
+				  <strong>Error!</strong> Incorrect Email or Password!
+				</div>
+				<div class="form-group">
+			    	<label for="InputEmail">Email address:</label>
+				    <input type="text" name="email" class="form-control" id="InputEmail" placeholder="Enter email">
+			    </div>
+			    <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">
+			    </div>
+			    <button id="loginBtn" class="btn btn-large btn-primary" type="submit">Login</button>
+			</form>
+			<p class="pull-right"><br>Forgot password? <a href="#reset">Reset</a></p>
+	    </div>
+
+	    <div class="col-sm-6 wbox">
+	    	<div id="registerForm">
+		    	<h2 class="form-signin-heading">New Customer?</h2>
+				<p>Are you interested in our expertize and want to enjoy new and exciting wines monthly?</p>
+				<a href="#signUp" id="regBtn" class="btn btn-primary">Sign up</a>
+			</div>
+	   	</div>
+	</div>
 </div>
-<input type="text" class="input-block-level" placeholder="Email address">
-<input type="password" class="input-block-level" placeholder="Password">
-<button id="loginBtn" class="btn btn-large btn-primary" type="submit">Sign in</button>
-<p><br>Forgot password?<a href="#" id="lostBtn" class="btn btn-large">Reset</a></p>

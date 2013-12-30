@@ -19,7 +19,9 @@
     "mocha": "~1.12.0",
     "chai": "~1.7.2",
     "sinon": "~1.7.3",
-    "holderjs": null
+    "holderjs": null,
+    "jqueryValidation": "https://github.com/jzaefferer/jquery-validation.git",
+    "requirejs-google-analytics": null
   },
   "devDependencies": {},
   "directory": "bower_components"
